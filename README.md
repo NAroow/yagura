@@ -162,7 +162,7 @@ Issues and PRs welcome — translations especially: copy `internal/web/static/i1
 
 ## License
 
-[MIT](LICENSE) © &lt;YOUR NAME&gt;
+[MIT](LICENSE) © &lt;NAroow&gt;
 
 ---
 
