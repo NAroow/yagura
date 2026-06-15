@@ -162,8 +162,7 @@ Issues and PRs welcome — translations especially: copy `internal/web/static/i1
 
 ## License
 
-[MIT](LICENSE) © &lt;NAroow&gt;
-
+[MIT](LICENSE) © NAroow
 ---
 
 > **Not affiliated with, endorsed by, or sponsored by Zabbix SIA.**
