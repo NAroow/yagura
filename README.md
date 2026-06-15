@@ -117,7 +117,7 @@ For **active** items (the agent connects to yagura and pushes data), make sure:
 - The agent's `Hostname` exactly matches the host's name in yagura — that's how incoming data is mapped to a host.
 - The items are **active type** — import a "… by Zabbix agent **active**" template, or set the item type to active. A passive-only host serves no active checks.
 
-Modern agents (`zabbix_agentd` / `agent2`, 4.0+) zlib-compress their active-check submissions; yagura speaks the compressed protocol, so current agents work out of the box.
+Zabbix **6.x and 7.x** agents (`zabbix_agentd` / `agent2`) both work out of the box — yagura handles the compressed wire protocol and 7.0's item-id-based active-check exchange (verified against real 6.0 and 7.0 agents).
 
 ## SNMP
 
