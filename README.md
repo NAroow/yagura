@@ -170,3 +170,4 @@ Issues and PRs welcome — translations especially: copy `internal/web/static/i1
 > "Zabbix" is a trademark of Zabbix SIA. yagura is an independent, clean-room implementation built against the publicly documented agent protocol and template format. It contains no Zabbix source code.
 # yagura
 # yagura
+# yagura
