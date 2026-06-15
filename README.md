@@ -6,8 +6,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/&lt;NArrow&gt;/yagura/releases"><img src="https://img.shields.io/github/v0.5beta/release/&lt;NArrow&gt;/yagura" alt="Release"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/&lt;NArrow&gt;/yagura" alt="License"></a>
+  <a href="https://github.com/&lt;NAroow&gt;/yagura/releases"><img src="https://img.shields.io/github/v0.5beta/release/&lt;NAroow&gt;/yagura" alt="Release"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/&lt;NAroow&gt;/yagura" alt="License"></a>
   <img src="https://img.shields.io/badge/Go-static%20binary-00ADD8" alt="Go">
 </p>
 
