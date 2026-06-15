@@ -49,7 +49,7 @@ YAGURA_OPTS="-data /var/lib/yagura -http :8086 -trapper :10051"
 ```ini
 Server=<yaguraのIP>          # パッシブチェック許可
 ServerActive=<yaguraのIP>    # アクティブチェック送信先 (ポート10051)
-Hostname=Hogehoge               # ★yagura側のホスト名と完全一致させる
+Hostname=web01               # ★yagura側のホスト名と完全一致させる
 ```
 
 zabbix_senderもそのまま:
@@ -59,6 +59,16 @@ zabbix_sender -z <yaguraのIP> -s web01 -k custom.metric -o 42.5
 ```
 
 (受け側アイテムは type=trapper で作成しておく)
+
+### アクティブチェックの注意
+
+**アクティブ**アイテム(エージェントがyaguraに接続してデータをpushする方式)では:
+
+- `ServerActive` は yagura の **trapper ポート `:10051`** に向ける ── Web UI の `:8086` ではない。アクティブチェックと `zabbix_sender` はWebポートを一切使わない
+- エージェントの `Hostname` を yagura 側のホスト名と完全一致させる(これで受信データがホストに紐付く)
+- アイテムが **アクティブ型** であること ── 「… by Zabbix agent **active**」テンプレを取り込むか、アイテム種別をactiveにする。パッシブのみのホストはアクティブチェックを一切配布しない
+
+モダンなエージェント(`zabbix_agentd` / `agent2` 4.0+)はアクティブチェックのデータをzlib圧縮して送る。yaguraは圧縮プロトコルに対応済みなので、現行エージェントがそのまま動く。
 
 ## Zabbixからの移行
 
