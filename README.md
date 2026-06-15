@@ -35,7 +35,7 @@ If you like the simplicity of modern tools like Beszel or Uptime Kuma but you've
 
 ## Quick start (Alpine LXC)
 
-Grab the latest static binary for your arch from [Releases](https://github.com/NAroow/yagura/releases) (`yagura-linux-amd64` / `yagura-linux-arm64`):
+Grab the latest static binary  from [Releases](https://github.com/NAroow/yagura/releases) (`yagura-linux-amd64`):
 
 ```sh
 apk add --no-cache ca-certificates          # required for HTTPS webhooks (Discord, etc.)
