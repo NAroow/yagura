@@ -68,7 +68,7 @@ zabbix_sender -z <yaguraのIP> -s web01 -k custom.metric -o 42.5
 - エージェントの `Hostname` を yagura 側のホスト名と完全一致させる(これで受信データがホストに紐付く)
 - アイテムが **アクティブ型** であること ── 「… by Zabbix agent **active**」テンプレを取り込むか、アイテム種別をactiveにする。パッシブのみのホストはアクティブチェックを一切配布しない
 
-モダンなエージェント(`zabbix_agentd` / `agent2` 4.0+)はアクティブチェックのデータをzlib圧縮して送る。yaguraは圧縮プロトコルに対応済みなので、現行エージェントがそのまま動く。
+Zabbix **6.x / 7.x** のエージェント(`zabbix_agentd` / `agent2`)はどちらもそのまま動く ── yaguraは圧縮プロトコルと、7.0のitemidベースのアクティブチェック交換の両方に対応済み(実機の6.0/7.0で検証済み)。
 
 ## Zabbixからの移行
 
