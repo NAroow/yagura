@@ -12,6 +12,9 @@
 </p>
 
 ---
+<img width="1248" height="650" alt="Image" src="https://github.com/user-attachments/assets/e9a53045-913f-4446-80a5-5226d4f1a4dd" />
+
+---
 
 
 **yagura** (櫓) is a self-hosted monitoring server that speaks the **Zabbix agent protocol** and imports **Zabbix templates** — but ships as one small static binary you can drop onto an Alpine LXC and run in minutes. No PHP, no heavyweight database, no wall of widgets.
