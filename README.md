@@ -13,6 +13,7 @@
 
 ---
 
+
 **yagura** (櫓) is a self-hosted monitoring server that speaks the **Zabbix agent protocol** and imports **Zabbix templates** — but ships as one small static binary you can drop onto an Alpine LXC and run in minutes. No PHP, no heavyweight database, no wall of widgets.
 
 If you like the simplicity of modern tools like Beszel or Uptime Kuma but you've already invested in the Zabbix agent + template ecosystem, yagura lets you keep that ecosystem without running the full Zabbix stack.
@@ -100,13 +101,23 @@ Translations live in `internal/web/static/i18n/{en,ja}.json` as a flat key → s
    ```ini
    Server=<yagura-ip>          # allow passive checks
    ServerActive=<yagura-ip>    # active checks → :10051
-   Hostname=Hogehoge              # must match the host name in yagura (active checks & sender)
+   Hostname=web01              # must match the host name in yagura (active checks & sender)
    ```
 2. In Zabbix, export the templates you use as **JSON** (`Data collection → Templates → Export`).
 3. Import the JSON in yagura's **Templates** page, then link it when you add a host — items, triggers and the `/Template/` host refs in trigger expressions are rewritten to the host name automatically.
 
 > Convert YAML exports first: `yq -o=json template.yaml > template.json`
 > `zabbix_sender -z <yagura-ip> -s web01 -k custom.metric -o 42.5` works too — create the receiving item as type `trapper`.
+
+### Active checks
+
+For **active** items (the agent connects to yagura and pushes data), make sure:
+
+- The agent's `ServerActive` points at yagura's **trapper port `:10051`** — *not* the web UI on `:8086`. Active checks and `zabbix_sender` never use the web port.
+- The agent's `Hostname` exactly matches the host's name in yagura — that's how incoming data is mapped to a host.
+- The items are **active type** — import a "… by Zabbix agent **active**" template, or set the item type to active. A passive-only host serves no active checks.
+
+Modern agents (`zabbix_agentd` / `agent2`, 4.0+) zlib-compress their active-check submissions; yagura speaks the compressed protocol, so current agents work out of the box.
 
 ## SNMP
 
@@ -162,7 +173,8 @@ Issues and PRs welcome — translations especially: copy `internal/web/static/i1
 
 ## License
 
-[MIT](LICENSE) © NAroow
+[MIT](LICENSE) © &lt;YOUR NAME&gt;
+
 ---
 
 > **Not affiliated with, endorsed by, or sponsored by Zabbix SIA.**
